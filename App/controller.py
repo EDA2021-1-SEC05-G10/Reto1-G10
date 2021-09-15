@@ -20,6 +20,7 @@
  * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
  """
 
+
 import config as cf
 import model
 import csv
@@ -29,10 +30,33 @@ import csv
 El controlador se encarga de mediar entre la vista y el modelo.
 """
 
-# Inicialización del Catálogo de libros
+def initCatalog():
+    """
+    Llama la funcion de inicializacion del catalogo del modelo.
+    """
+    catalog = model.initCatalog()
+    return catalog
+
 
 # Funciones para la carga de datos
 
-# Funciones de ordenamiento
 
-# Funciones de consulta sobre el catálogo
+def loadData(catalog):
+   
+    loadArtworks(catalog)
+    loadArtists(catalog)
+
+def loadArtworks(catalog):
+    
+    Artworksfile = cf.data_dir + 'Moma/Artworks-small.csv'
+    input_file = csv.DictReader(open(Artworksfile, encoding='utf-8'))
+    for Artwork in input_file:
+        model.addArtworks(catalog, Artwork)
+
+def loadArtists(catalog):
+    
+    Artistsfile = cf.data_dir + 'Moma/Artists-small.csv'
+    input_file = csv.DictReader(open(Artistsfile, encoding='utf-8'))
+    for Artists in input_file:
+        model.addArtists(catalog, Artists)
+    

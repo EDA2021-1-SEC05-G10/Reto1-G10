@@ -25,6 +25,9 @@
  """
 
 
+#from App.view import Artists
+
+
 import config as cf
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
@@ -34,15 +37,23 @@ assert cf
 Se define la estructura de un catálogo de videos. El catálogo tendrá dos listas, una para los videos, otra para las categorias de
 los mismos.
 """
+def initCatalog():
+    
+    catalog = {'Artists': None,
+               'Artworks': None,
+               }
 
-# Construccion de modelos
+    catalog['Artists'] = lt.newList()
+    catalog['Artworks'] = lt.newList('ARRAY_LIST',
+                                    )
 
-# Funciones para agregar informacion al catalogo
+    return catalog
 
-# Funciones para creacion de datos
+def addArtworks(catalog, Artwork):
 
-# Funciones de consulta
-
-# Funciones utilizadas para comparar elementos dentro de una lista
-
-# Funciones de ordenamiento
+    lt.addLast(catalog['Artworks'], Artwork)
+    
+    
+def addArtists(catalog, Artists):
+    
+    lt.addLast(catalog['Artists'], Artists)

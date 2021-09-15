@@ -20,9 +20,10 @@
  * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
  """
 
+
 import config as cf
-import sys
 import controller
+import sys
 from DISClib.ADT import list as lt
 assert cf
 
@@ -37,9 +38,18 @@ operación solicitada
 def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
-    print("2- ")
+    print("0- Salir")
 
-catalog = None
+def initCatalog():
+   
+    return controller.initCatalog()
+
+def loadData(catalog):
+    
+    controller.loadData(catalog)
+
+
+
 
 """
 Menu principal
@@ -49,10 +59,12 @@ while True:
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
         print("Cargando información de los archivos ....")
-
-    elif int(inputs[0]) == 2:
-        pass
+        catalog = initCatalog()
+        print(catalog)
+        
+   
 
     else:
         sys.exit(0)
-sys.exit(0)
+
+
