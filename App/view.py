@@ -27,6 +27,9 @@ import sys
 from DISClib.ADT import list as lt
 assert cf
 
+default_limit = 1000
+sys.setrecursionlimit(default_limit*10)
+
 
 """
 La vista se encarga de la interacción con el usuario
@@ -60,6 +63,8 @@ while True:
     if int(inputs[0]) == 1:
         print("Cargando información de los archivos ....")
         catalog = initCatalog()
+        loadData(catalog)
+
         print(catalog)
         
    

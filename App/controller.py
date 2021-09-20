@@ -24,6 +24,7 @@
 import config as cf
 import model
 import csv
+import os
 
 
 """
@@ -47,15 +48,14 @@ def loadData(catalog):
     loadArtists(catalog)
 
 def loadArtworks(catalog):
-    
-    Artworksfile = cf.data_dir + 'Moma/Artworks-small.csv'
+    Artworksfile = cf.data_dir + 'Moma/Artworks-utf8-small.csv'
     input_file = csv.DictReader(open(Artworksfile, encoding='utf-8'))
     for Artwork in input_file:
         model.addArtworks(catalog, Artwork)
 
 def loadArtists(catalog):
     
-    Artistsfile = cf.data_dir + 'Moma/Artists-small.csv'
+    Artistsfile = cf.data_dir + 'Moma/Artists-utf8-small.csv'
     input_file = csv.DictReader(open(Artistsfile, encoding='utf-8'))
     for Artists in input_file:
         model.addArtists(catalog, Artists)
