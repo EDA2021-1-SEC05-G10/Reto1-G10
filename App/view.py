@@ -28,6 +28,7 @@ import sys
 from DISClib.ADT import list as lt
 assert cf
 from prettytable import PrettyTable
+import time 
 
 default_limit = 1000
 sys.setrecursionlimit(default_limit*10)
@@ -73,6 +74,7 @@ while True:
     printMenu()
     inputs = input('Seleccione una opción para continuar\n')
     if int(inputs[0]) == 1:
+        start_time = time.process_time()
         print("Cargando información de los archivos ....")
         catalog = initCatalog()
         loadData(catalog)
@@ -104,28 +106,39 @@ while True:
             elif ind < sizew-3:
                 ind += 1
         print(artw)
-
+        stop_time = time.process_time()
+        tiempo = (stop_time-start_time)*1000
+        print(tiempo)
     elif int(inputs[0]) == 2:
         inicial = input("Año inicial: ")
         final = input("Año final: ")
+        start_time = time.process_time()
         size, final = controller.req1(inicial, final, catalog)
         printreq1(size, final)
-        
+        stop_time = time.process_time()
+        tiempo = (stop_time-start_time)*1000
+        print(tiempo)
     elif int(inputs[0]) == 3:
         inicial = input("Fecha inicial del intervalo: ")
         final = input("Fecha final: ")
+        start_time = time.process_time()
         total, art = controller.req2(inicial, final, catalog)   
         print(total, art)
-
+        stop_time = time.process_time()
+        tiempo = (stop_time-start_time)*1000
+        print(tiempo)
     elif int(inputs[0]) == 4:
         Name = input("Nombre a buscar: ")
+        start_time = time.process_time()
         elm, tabla, tabla2 = controller.req3(catalog,Name)
         print("En el museo hay "+str(elm)+" obras a nombre de "+ Name )
         print("")
         print(tabla)
         print("")
         print(tabla2)
-
+        stop_time = time.process_time()
+        tiempo = (stop_time-start_time)*1000
+        print(tiempo)
     elif int(inputs[0]) == 5:
    
         Artworks = input("Cantidad de obras: ")

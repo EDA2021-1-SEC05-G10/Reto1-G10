@@ -116,7 +116,7 @@ def requ2(inicial,final,catalog):
     final = divFechas(final)
     art = PrettyTable(hrules = ALL)
     art.field_names = ["Titulo", "Año", "Medio", "Dimesiones","Fecha de compra"]
-    art._max_width={"Titulo":17,"Año":14,"Medio":15, "Dimensiones":17, "Fecha de compra":14} 
+    art._max_width={"Titulo":15,"Año":14,"Medio":15, "Dimensiones":15, "Fecha de compra":14} 
     lista = []
     idx = 6
     for artw in lt.iterator(catalog["Artworks"]):
@@ -178,3 +178,20 @@ def requ3(catalog, Name):
             tabla2.add_row(obras)
     return len(lista), mediosFinal,tabla2
 
+# Requerimiento 4 ------------------------------------------------
+ 
+def Artworksnacionalidad(catalog):
+    a= PrettyTable()
+    dict_final = {}
+    a.field_names = ["Nationality", "Artworks"]
+    
+    for artwork in lt.iterator(catalog["Artworks"]):
+        artworkartist= artwork["ConstituentID"]
+    for artist in lt.iterator(catalog["Artists"]):
+        if artist["Nationality"] != "":
+            if (len(artist["Nationality"]) > 0 and (artist["Nationality"] != "Nationality unknown")):
+                dict_final[artist["Nationality"]] = lt.size(artist["DisplayName"])
+            else:
+                dict_final[artist['Nationality']] += 1
+            x=[artist["Nationality"]]
+            a.add_row(x)
