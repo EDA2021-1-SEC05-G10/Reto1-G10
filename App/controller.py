@@ -59,4 +59,20 @@ def loadArtists(catalog):
     input_file = csv.DictReader(open(Artistsfile, encoding='utf-8'))
     for Artists in input_file:
         model.addArtists(catalog, Artists)
+
+
+#---------
     
+def req1(inicial, Final,catalog):
+    year = model.requ1(inicial, Final,catalog)
+    return year
+
+def req2(inicial,final,catalog):
+    total, art = model.requ2(inicial,final,catalog)
+    return total, art
+def req3(catalog, Name):
+    may, final, tabla2 = model.requ3(catalog, Name)
+    return may,final, tabla2 
+def Artworksnacionalidad(catalog, Artworks):
+    x = model.Artworksnacionalidad(catalog,Artworks)
+    return x 
